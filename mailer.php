@@ -8,33 +8,33 @@ require 'vendor/autoload.php';
 define('TEST_MODE', true);
 
 function mailGonder($aliciMail, $aliciAdSoyad, $konu, $icerik) {
-    if (TEST_MODE) {
-        // Test modu - gerçek mail göndermez
-        echo "TEST MODU: Mail gönderildi (gerçekte gönderilmedi)<br>";
-        echo "Alıcı: $aliciMail<br>";
-        echo "Konu: $konu<br>";
-        echo "İçerik: $icerik<br><br>";
-        return true; // Başarılı olarak döner
+    // TEST MODU: Gerçek mail gönderimi yapılmaz
+    $testModu = true;
+
+    if ($testModu) {
+        echo "<div style='border:2px dashed orange; padding:10px; margin:15px 0; background:#fffbe6'>";
+        echo "<strong>[TEST MODU]</strong> Mail gönderimi simüle edildi:<br>";
+        echo "👤 <strong>Alıcı:</strong> " . htmlspecialchars($aliciAdSoyad) . " &lt;" . htmlspecialchars($aliciMail) . "&gt;<br>";
+        echo "✉️ <strong>Konu:</strong> " . htmlspecialchars($konu) . "<br>";
+        echo "📝 <strong>İçerik:</strong><br>" . nl2br(htmlspecialchars($icerik));
+        echo "</div>";
+        return true;
     }
-    
-    // Gerçek mail gönderme kodu (TEST_MODE false olduğunda çalışır)
-    $mail = new PHPMailer(true);
+
+    $mail = new PHPMailer(true); // Gerçek gönderim
 
     try {
-        // Server ayarları
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'gercek_mail_adresiniz@gmail.com'; // Gerçek mail adresiniz
-        $mail->Password   = 'uygulama_sifresi'; // Gmail uygulama şifresi
+        $mail->Username   = 'seninmailin@gmail.com';
+        $mail->Password   = 'uygulama şifresi';
         $mail->SMTPSecure = 'tls';
         $mail->Port       = 587;
 
-        // Gönderici ve alıcı bilgileri
-        $mail->setFrom('gercek_mail_adresiniz@gmail.com', 'Mesaj Sistemi');
+        $mail->setFrom('seninmailin@gmail.com', 'Senin Adın');
         $mail->addAddress($aliciMail, $aliciAdSoyad);
 
-        // İçerik
         $mail->isHTML(true);
         $mail->Subject = $konu;
         $mail->Body    = $icerik;

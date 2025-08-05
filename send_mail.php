@@ -8,7 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$komiteler = $_POST['komiteler'] ?? [];
+$komiteler_json = $_POST['komiteler'] ?? '[]';
+$komiteler = json_decode($komiteler_json, true) ?? [];
 $baslik = $_POST['baslik'] ?? '';
 $icerik = $_POST['icerik'] ?? '';
 
