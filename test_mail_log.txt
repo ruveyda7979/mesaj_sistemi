@@ -1,0 +1,4 @@
+[TEST MODU] 2025-08-07 20:15:42 - Mail gönderildi: Zeynep Demir <zeynep.demir@yahoo.com> - Konu: Toplantı Daveti
+[TEST MODU] 2025-08-07 20:15:42 - Mail gönderildi: Mustafa Öztürk <mustafa.ozturk@gmail.com> - Konu: Toplantı Daveti
+[TEST MODU] 2025-08-07 20:43:25 - Mail gönderildi: Mehmet Kaya <mehmet.kaya@hotmail.com> - Konu: Toplantı Daveti
+[TEST MODU] 2025-08-07 20:43:25 - Mail gönderildi: Elif Şahin <elif.sahin@gmail.com> - Konu: Toplantı Daveti
